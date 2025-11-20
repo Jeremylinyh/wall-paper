@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://sw6vaqpeixqe"]
+
+[ext_resource type="Script" uid="uid://f54andcild5v" path="res://Scenes/Units/ore.gd" id="1_qr8cs"]
+[ext_resource type="Texture2D" uid="uid://cebfwt7i81ls0" path="res://Assets/metal_ore_sprite.png" id="2_qr8cs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr8cs"]
+size = Vector2(64, 64)
+
+[node name="Ore" type="StaticBody2D"]
+collision_layer = 393216
+collision_mask = 393216
+script = ExtResource("1_qr8cs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("2_qr8cs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_qr8cs")

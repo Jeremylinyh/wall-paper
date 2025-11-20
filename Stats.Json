@@ -1,0 +1,30 @@
+{
+	"Enemies": {
+		"AFour": {
+			"name":"A4",
+			"health": 5,
+			"speed":60,
+			"loot_table":{
+				"paper":1
+			}
+		}
+	},
+	"Friends": {
+		"stapler": {
+			"name": "stapler",
+			"metal_cost": 100.0,
+			"paper_cost": 0.0,
+			"damage":10,
+			"health": 100.0,
+			"auto_attack": false
+		},
+	"paper_clip": {
+			"name": "paper clip",
+			"metal_cost": 10.0,
+			"paper_cost": 0.0,
+			"damge":0,
+			"special_damage":"become wall",
+			"health": 1.0
+		}
+	}
+}

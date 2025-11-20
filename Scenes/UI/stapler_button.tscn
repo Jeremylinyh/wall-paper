@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn1jqh7myihlw"]
+
+[ext_resource type="Texture2D" uid="uid://bn3ufc5txrd2t" path="res://Assets/Units/Stapler.png" id="1_uv7il"]
+[ext_resource type="Script" uid="uid://16mwtqjcy3nx" path="res://Scripts/PlaceStaples.gd" id="2_ukbcx"]
+[ext_resource type="PackedScene" uid="uid://biedgnwnb4kak" path="res://Scenes/Units/baseunit.tscn" id="3_ykk8q"]
+[ext_resource type="Texture2D" uid="uid://cokm5n3o0yctw" path="res://Assets/icon.svg" id="4_ssoiu"]
+
+[node name="StaplerButton" type="TextureButton"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 265.0
+offset_bottom = -382.0
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("1_uv7il")
+script = ExtResource("2_ukbcx")
+toBePlaced = ExtResource("3_ykk8q")
+picture = ExtResource("4_ssoiu")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

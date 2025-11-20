@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://duy0tjbugvk50"]
+
+[ext_resource type="Script" uid="uid://dftnofov2ywp0" path="res://Scripts/Units/move_toward_player_blind.gd" id="1_5aavq"]
+[ext_resource type="Script" uid="uid://bk657pkjfxqne" path="res://Scripts/Units/A_star.gd" id="2_csli2"]
+
+[node name="MoveTowardPlayerBlind" type="Node2D"]
+script = ExtResource("1_5aavq")
+
+[node name="AI slop" type="Node2D" parent="."]
+script = ExtResource("2_csli2")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://c78bmejt28lja"]
+
+[ext_resource type="Texture2D" uid="uid://bn3ufc5txrd2t" path="res://Assets/Units/Stapler.png" id="1_ullfj"]
+[ext_resource type="Script" uid="uid://16mwtqjcy3nx" path="res://Scripts/PlaceStaples.gd" id="2_kn7c3"]
+[ext_resource type="PackedScene" uid="uid://biedgnwnb4kak" path="res://Scenes/Units/baseunit.tscn" id="3_xupts"]
+
+[node name="Tower_Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Funni background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 1920.0
+grow_vertical = 0
+
+[node name="StaplerButton" type="TextureButton" parent="Funni background"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 265.0
+offset_bottom = 166.0
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("1_ullfj")
+script = ExtResource("2_kn7c3")
+toBePlaced = ExtResource("3_xupts")
+
+[connection signal="pressed" from="Funni background/StaplerButton" to="Funni background/StaplerButton" method="_on_pressed"]

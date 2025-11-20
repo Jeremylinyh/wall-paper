@@ -1,0 +1,107 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://crn7j5jk60tav"]
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_52yda"]
+output_port_for_preview = 0
+size = Vector2(660, 600)
+expression = "vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
+
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
+
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) + 0.5;
+}
+
+perlin.xy = UV //noise(UV)"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_cyima"]
+output_port_for_preview = 0
+input_name = "fragcoord"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_52yda"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 3
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_cyima"]
+default_input_values = [0, 1.0, 1, 0.0, 2, 0.0, 3, 0.0]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_d8pgf"]
+constant = 100.0
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void fragment() {
+// Input:3
+	vec4 n_out3p0 = FRAGCOORD;
+
+
+// FloatConstant:6
+	float n_out6p0 = 100.000000;
+
+
+// VectorCompose:5
+	vec4 n_out5p0 = vec4(n_out6p0, n_out6p0, n_out6p0, n_out6p0);
+
+
+// VectorOp:4
+	vec4 n_out4p0 = n_out3p0 / n_out5p0;
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out4p0.xyz);
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(620, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeExpression_52yda")
+nodes/fragment/2/position = Vector2(-140, -20)
+nodes/fragment/2/size = Vector2(660, 600)
+nodes/fragment/2/input_ports = "0,3,UV;"
+nodes/fragment/2/output_ports = "0,0,perlin;"
+nodes/fragment/2/expression = "vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
+
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
+
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) + 0.5;
+}
+
+perlin.xy = UV //noise(UV)"
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_cyima")
+nodes/fragment/3/position = Vector2(-660, 100)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorOp_52yda")
+nodes/fragment/4/position = Vector2(-340, 380)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorCompose_cyima")
+nodes/fragment/5/position = Vector2(-560, 420)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_d8pgf")
+nodes/fragment/6/position = Vector2(-1076.82, 643.942)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 3, 0, 4, 0, 6, 0, 5, 0, 6, 0, 5, 1, 6, 0, 5, 2, 6, 0, 5, 3, 5, 0, 4, 1, 4, 0, 0, 0)

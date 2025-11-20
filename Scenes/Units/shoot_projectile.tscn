@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://v3ogfuij8v76"]
+
+[ext_resource type="Script" uid="uid://cosq02xa5wsp0" path="res://Scripts/Units/shoot_projectile.gd" id="1_t2wi7"]
+[ext_resource type="PackedScene" uid="uid://biedgnwnb4kak" path="res://Scenes/Units/baseunit.tscn" id="2_mqj6b"]
+[ext_resource type="Texture2D" uid="uid://c7acaqa7sm5ps" path="res://Assets/Units/staplev2.png" id="3_mqj6b"]
+[ext_resource type="PackedScene" uid="uid://d25n68sknb4mj" path="res://Scenes/Units/take_damage.tscn" id="4_j1mhe"]
+
+[node name="ShootProjectile" type="Node2D"]
+script = ExtResource("1_t2wi7")
+projectile = ExtResource("2_mqj6b")
+projectilePicture = ExtResource("3_mqj6b")
+mustContain = Array[PackedScene]([ExtResource("4_j1mhe")])

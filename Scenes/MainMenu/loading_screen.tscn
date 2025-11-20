@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvuyy6048knqw"]
+
+[ext_resource type="Texture2D" uid="uid://c3an0oftetmf" path="res://Assets/MainMenuUI/Prop2.png" id="1_ljpb3"]
+
+[node name="LoadingScreen" type="TextureRect"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ljpb3")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 234.0
+offset_right = 1083.0
+offset_bottom = 392.0
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 31
+text = "Pretending to load so you feel like you are playing a triple A game truss."

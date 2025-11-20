@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://biedgnwnb4kak"]
+
+[ext_resource type="Script" uid="uid://lm6d61wg41tu" path="res://Scripts/Units/baseunit.gd" id="1_5fulg"]
+[ext_resource type="Texture2D" uid="uid://bn3ufc5txrd2t" path="res://Assets/Units/Stapler.png" id="2_y8o1o"]
+
+[node name="Baseunit" type="Node2D"]
+script = ExtResource("1_5fulg")
+picture = ExtResource("2_y8o1o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
