@@ -6,6 +6,8 @@ extends Node2D
 
 @export var pixaxe : PackedScene
 
+@export var t : float = 0
+
 func _input(event):
 	if event.is_action_pressed("Attack") :
 		print("Attack!")
@@ -19,5 +21,7 @@ func _input(event):
 		
 		var vertexPos : Vector2 = $"..".position + direction
 		
-		var tween = get_tree().create_tween()
+		var tween : Tween = get_tree().create_tween()
+		tween.tween_property(self,"t",2 * PI,1)
+		tween.play()
 		# destroy pixaxe
