@@ -1,3 +1,49 @@
-[gd_scene format=3 uid="uid://i4xdc6y2k5sk"]
+[gd_scene load_steps=9 format=3 uid="uid://i4xdc6y2k5sk"]
+
+[ext_resource type="Texture2D" uid="uid://ctaqjesaovy0j" path="res://Assets/Units/PickaxeAnimation/frame0000.png" id="1_vywcr"]
+[ext_resource type="Texture2D" uid="uid://bu8roq7uidvc0" path="res://Assets/Units/PickaxeAnimation/frame0001.png" id="2_rvalf"]
+[ext_resource type="Texture2D" uid="uid://ckqbs014epyk4" path="res://Assets/Units/PickaxeAnimation/frame0002.png" id="3_m1gt6"]
+[ext_resource type="Texture2D" uid="uid://bgq5yplq7eiyu" path="res://Assets/Units/PickaxeAnimation/frame0003.png" id="4_r2pf1"]
+[ext_resource type="Texture2D" uid="uid://c65rlm43wpp3n" path="res://Assets/Units/PickaxeAnimation/frame0004.png" id="5_aya4p"]
+[ext_resource type="Texture2D" uid="uid://dd57ob4aeju3s" path="res://Assets/Units/PickaxeAnimation/frame0005.png" id="6_73mvw"]
+[ext_resource type="Texture2D" uid="uid://cokm5n3o0yctw" path="res://Assets/icon.svg" id="7_rvalf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uydqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vywcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rvalf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m1gt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r2pf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aya4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_73mvw")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 15.0
+}]
 
 [node name="Attack" type="Node2D"]
+
+[node name="AttackAnime" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_uydqi")
+animation = &"Attack"
+frame = 5
+frame_progress = 1.0
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="AttackAnime"]
+texture = ExtResource("7_rvalf")
+centered = false

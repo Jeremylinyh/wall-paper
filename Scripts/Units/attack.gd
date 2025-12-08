@@ -10,18 +10,19 @@ extends Node2D
 
 func _input(event):
 	if event.is_action_pressed("Attack") :
-		print("Attack!")
+		#print("Attack!")
 		# Spawn pixaxe
-		var weapon : Node2D = pixaxe.instantiate()
+		#var weapon : Node2D = pixaxe.instantiate()
 		
 		# swing
-		var mouse_position : Vector2 = get_viewport().get_mouse_position()
-		var direction : Vector2 = (mouse_position - $"..".position)
+		var mouse_position : Vector2 = get_global_mouse_position()# get_viewport().get_mouse_position()
+		var direction : Vector2 = (mouse_position + $"..".position)
 		direction = direction.normalized()
 		
-		var vertexPos : Vector2 = $"..".position + direction
-		
-		var tween : Tween = get_tree().create_tween()
-		tween.tween_property(self,"t",2 * PI,1)
-		tween.play()
-		# destroy pixaxe
+		var angle = atan2(direction.y,direction.x) #- PI
+		#angle = rad_to_deg(angle)
+		#print(angle)
+		#$AttackAnime.rotation += rad_to_deg(45)
+		$AttackAnime.look_at(mouse_position)
+		#print(mouse_position)
+		$AttackAnime.play("Attack")
