@@ -22,7 +22,7 @@ func _input(event):
 		var angle = atan2(direction.y,direction.x) #- PI
 		#angle = rad_to_deg(angle)
 		#print(angle)
-		#$AttackAnime.rotation += rad_to_deg(45)
+		#
 		$AttackAnime.look_at(mouse_position)
-		#print(mouse_position)
+		$AttackAnime.rotation -= deg_to_rad(45)
 		$AttackAnime.play("Attack")
