@@ -1,3 +1,58 @@
-[gd_scene format=3 uid="uid://i4xdc6y2k5sk"]
+[gd_scene load_steps=9 format=3 uid="uid://i4xdc6y2k5sk"]
+
+[ext_resource type="Texture2D" uid="uid://cgx6574yu4ws1" path="res://Assets/Units/PickaxeSwingAnimationFull/frame0000.png" id="1_vywcr"]
+[ext_resource type="Texture2D" uid="uid://sydbxu1x2gfn" path="res://Assets/Units/PickaxeSwingAnimationFull/frame0001.png" id="2_rvalf"]
+[ext_resource type="Texture2D" uid="uid://bje8nlujw2ljm" path="res://Assets/Units/PickaxeSwingAnimationFull/frame0002.png" id="3_m1gt6"]
+[ext_resource type="Texture2D" uid="uid://l12f7teqh5ni" path="res://Assets/Units/PickaxeSwingAnimationFull/frame0003.png" id="4_r2pf1"]
+[ext_resource type="Texture2D" uid="uid://crqdp8anxqjks" path="res://Assets/Units/PickaxeSwingAnimationFull/frame0004.png" id="5_aya4p"]
+[ext_resource type="Texture2D" uid="uid://q8ndpqachgp" path="res://Assets/Units/PickaxeSwingAnimationFull/frame0005.png" id="6_73mvw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uydqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_73mvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_vywcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rvalf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m1gt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r2pf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_aya4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_73mvw")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vywcr"]
+radius = 64.0
 
 [node name="Attack" type="Node2D"]
+
+[node name="AttackAnime" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_uydqi")
+animation = &"Attack"
+frame = 6
+frame_progress = 1.0
+centered = false
+
+[node name="Area2D" type="Area2D" parent="AttackAnime"]
+collision_layer = 0
+collision_mask = 393224
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackAnime/Area2D"]
+position = Vector2(64, 64)
+shape = SubResource("CircleShape2D_vywcr")
