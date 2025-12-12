@@ -5,7 +5,7 @@ extends Node2D
 @export var swingTime : int = 1
 
 @export var pixaxe : PackedScene
-
+@export var mineRate : int = 1
 @export var t : float = 0
 
 func _input(event):
@@ -34,3 +34,5 @@ func _input(event):
 			if body.has_node("Helth") :
 				var health : Node2D = body.get_node("Helth")
 				health.currentHealth -= 10
+			else :
+				$"../..".playerMaterial += mineRate
