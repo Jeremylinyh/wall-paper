@@ -8,7 +8,13 @@ extends Node2D
 @export var mineRate : int = 1
 @export var t : float = 0
 
+@export var cooldown : float = 0.6
+var lastFired = 0
+
 func _input(event):
+	if (Time.get_ticks_msec() - lastFired <= cooldown) :
+		return
+	lastFired = Time.get_ticks_msec()
 	if event.is_action_pressed("Attack") :
 		#print("Attack!")
 		# Spawn pixaxe
