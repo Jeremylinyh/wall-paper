@@ -5,7 +5,7 @@ extends Node2D
 @export var swingTime : int = 1
 
 @export var pixaxe : PackedScene
-@export var mineRate : int = 1
+@export var mineRate : int = 16
 @export var t : float = 0
 
 @export var cooldown : float = 0.6
@@ -42,3 +42,4 @@ func _input(event):
 				health.currentHealth -= 10
 			else :
 				$"../..".playerMaterial += mineRate
+				body.queue_free()
