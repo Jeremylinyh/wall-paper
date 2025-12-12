@@ -26,3 +26,11 @@ func _input(event):
 		$AttackAnime.look_at(mouse_position)
 		$AttackAnime.rotation -= deg_to_rad(45)
 		$AttackAnime.play("Attack")
+		
+		await get_tree().create_timer(0.1).timeout
+		
+		var bodies : Array[Node2D] = $AttackAnime/Area2D.get_overlapping_bodies()
+		for body in bodies :
+			if body.has_node("Helth") :
+				var health : Node2D = body.get_node("Helth")
+				health.currentHealth -= 10
