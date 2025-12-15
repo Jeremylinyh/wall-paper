@@ -1,6 +1,7 @@
 # wall-paper
 
-### Bucket list
-1. Big enemy (normal paper but bigger hitbox so it can get killed more easily)
-2. Attack animation for the player (consist of purely the pickax)
-3. yes
+welcome to funni wall paper game
+originally it is supposed to be you staple papers on the ground to form a wall around you
+it turns out it is really hard to balance so we regressed to a default tower defense game
+
+non exisistant code organization. enjoy.
