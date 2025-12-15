@@ -53,10 +53,12 @@ func periodical_table() :
 			
 		newEnemy.picture = paperEnemySprite
 		if (rng.randf() < enemyIsBigChance) :
-			print("spawned a big one")
+			#print("spawned a big one")
 			newEnemy.get_node("Helth").currentHealth = 1000
 			newEnemy.get_node("MoveTowardPlayerBlind").defaultSpeed = 1.0
 			newEnemy.get_node("Sprite2D").scale = Vector2(3,3)
+			newEnemy.get_node("Helth").scale = Vector2(1.0/6.0,1.0)
+			newEnemy.get_node("Helth").position *= 3.0
 			newEnemy.get_node("CollisionShape2D").scale = Vector2(3,3)
 		await get_tree().create_timer(waitBetweenEnemySpawns).timeout
 		
