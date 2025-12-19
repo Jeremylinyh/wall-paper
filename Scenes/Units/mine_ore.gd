@@ -17,5 +17,6 @@ func _ready() -> void:
 		helthNode.currentHealth -= miningSpeed
 	
 	get_parent().get_parent().get_parent().playerMaterial += output
-	oreNode.queue_free()
+	if oreNode :
+		oreNode.queue_free()
 	helthNode.currentHealth = 0
