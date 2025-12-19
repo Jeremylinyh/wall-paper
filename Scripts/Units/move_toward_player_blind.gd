@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var enemyUnit : CharacterBody2D = $".."
 var player
-@export var defaultSpeed : float = 3.0;
+@export var defaultSpeed : float = 1.0;
 
 var path : Array
 var index : int = 0

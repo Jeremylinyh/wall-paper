@@ -1,11 +1,13 @@
-[gd_scene load_steps=41 format=4 uid="uid://ct3jq44d8orki"]
+[gd_scene load_steps=43 format=4 uid="uid://ct3jq44d8orki"]
 
 [ext_resource type="Texture2D" uid="uid://bnl5vg16iwdr5" path="res://Assets/TilemapPics/TilemapV1.png" id="1_ci6au"]
 [ext_resource type="Script" uid="uid://flpbp0ucby67" path="res://Scripts/Global/GlobalValues.gd" id="1_np2xp"]
 [ext_resource type="PackedScene" uid="uid://bw4yb618j7iaa" path="res://Scenes/player.tscn" id="2_26yhd"]
 [ext_resource type="PackedScene" uid="uid://i4xdc6y2k5sk" path="res://Scenes/Units/attack.tscn" id="4_4c2oa"]
+[ext_resource type="Script" uid="uid://dftnofov2ywp0" path="res://Scripts/Units/move_toward_player_blind.gd" id="4_pmuo0"]
 [ext_resource type="PackedScene" uid="uid://biedgnwnb4kak" path="res://Scenes/Units/baseunit.tscn" id="4_q0mm3"]
 [ext_resource type="Texture2D" uid="uid://bc241fr1b7cs0" path="res://Assets/Enemies/paper_enemy.png" id="5_fls3e"]
+[ext_resource type="Script" uid="uid://bk657pkjfxqne" path="res://Scripts/Units/A_star.gd" id="5_gg4i5"]
 [ext_resource type="Script" uid="uid://cemqrppjaxit4" path="res://Scripts/Units/attack.gd" id="5_olcgw"]
 [ext_resource type="Script" uid="uid://dpm57meb0qut" path="res://Scripts/UI/anti_overlap.gd" id="6_4c2oa"]
 [ext_resource type="PackedScene" uid="uid://d25n68sknb4mj" path="res://Scenes/Units/take_damage.tscn" id="6_vtkp8"]
@@ -25,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://baer5s17jqur2" path="res://Assets/TilemapPics/greenGrass.png" id="13_8cxpi"]
 [ext_resource type="PackedScene" uid="uid://v3ogfuij8v76" path="res://Scenes/Units/shoot_projectile.tscn" id="14_k63oc"]
 [ext_resource type="Texture2D" uid="uid://c7acaqa7sm5ps" path="res://Assets/Units/staplev2.png" id="16_riaky"]
-[ext_resource type="PackedScene" uid="uid://duy0tjbugvk50" path="res://Scenes/Units/move_toward_player_blind.tscn" id="17_k63oc"]
 [ext_resource type="Shader" uid="uid://70an5n7owrcj" path="res://Scripts/proceGen/map.gdshader" id="18_078fj"]
 [ext_resource type="Texture2D" uid="uid://cokm5n3o0yctw" path="res://Assets/icon.svg" id="19_unquq"]
 [ext_resource type="Script" uid="uid://c01icmhowmhph" path="res://Scripts/UI/EndScreen.gd" id="20_ak4ow"]
@@ -37,6 +38,19 @@
 [ext_resource type="Texture2D" uid="uid://2lvep4ksr077" path="res://Assets/Towers/tape_dispenser_clean.png" id="31_1xwpj"]
 [ext_resource type="PackedScene" uid="uid://1wbrvf6qis3w" path="res://Scenes/Units/Heal.tscn" id="32_1xwpj"]
 [ext_resource type="Script" uid="uid://7nlrg46bqbhw" path="res://Scripts/UI/toMenu.gd" id="33_ajvq6"]
+
+[sub_resource type="PackedScene" id="PackedScene_natfk"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("MoveTowardPlayerBlind", "Node2D", "script", "AI slop", "Node2D", "script"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0),
+"variants": [ExtResource("4_pmuo0"), ExtResource("5_gg4i5")],
+"version": 3
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26yhd"]
 texture = ExtResource("1_ci6au")
@@ -819,7 +833,7 @@ script = ExtResource("13_5qtum")
 baseEnemy = ExtResource("4_q0mm3")
 sequence = Array[Vector2]([Vector2(16, 16), Vector2(3, 0.6), Vector2(1, 0.1)])
 playerCharacter = NodePath("../Player")
-paperEnemyFeatures = Array[PackedScene]([ExtResource("17_k63oc"), ExtResource("10_riaky"), ExtResource("6_vtkp8")])
+paperEnemyFeatures = Array[PackedScene]([SubResource("PackedScene_natfk"), ExtResource("10_riaky"), ExtResource("6_vtkp8")])
 paperEnemySprite = ExtResource("5_fls3e")
 
 [node name="ProjectilesFolder" type="Node2D" parent="."]
@@ -849,6 +863,7 @@ endScreen = NodePath("../End")
 
 [node name="Attack" parent="Player" instance=ExtResource("4_4c2oa")]
 script = ExtResource("5_olcgw")
+cooldown = 0.27
 
 [node name="Helth" parent="Player" instance=ExtResource("10_riaky")]
 
@@ -934,7 +949,7 @@ picture = ExtResource("29_cwq17")
 helthAmount = 67.0
 costPosition = false
 MapNode = NodePath("../../../..")
-mustContain = Array[PackedScene]([ExtResource("17_k63oc"), ExtResource("14_k63oc"), ExtResource("10_riaky")])
+mustContain = Array[PackedScene]([SubResource("PackedScene_natfk"), ExtResource("14_k63oc"), ExtResource("10_riaky")])
 projectileHolder = NodePath("../../../../ProjectilesFolder")
 mobSpawner = NodePath("../../../../Mob_spawner")
 projectilePicture = ExtResource("19_unquq")
