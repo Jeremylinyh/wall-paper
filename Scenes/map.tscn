@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://ct3jq44d8orki"]
+[gd_scene load_steps=41 format=4 uid="uid://ct3jq44d8orki"]
 
 [ext_resource type="Texture2D" uid="uid://bnl5vg16iwdr5" path="res://Assets/TilemapPics/TilemapV1.png" id="1_ci6au"]
 [ext_resource type="Script" uid="uid://flpbp0ucby67" path="res://Scripts/Global/GlobalValues.gd" id="1_np2xp"]
@@ -33,6 +33,9 @@
 [ext_resource type="Script" uid="uid://b4nffju3a1eni" path="res://Scenes/MainMenu/loading_screen.gd" id="28_078fj"]
 [ext_resource type="PackedScene" uid="uid://dl5qt4fxlxqgs" path="res://Scenes/Units/mine_ore.tscn" id="28_pptwf"]
 [ext_resource type="Texture2D" uid="uid://ff0dyy0fq7gc" path="res://Assets/Units/Stapler walker.png" id="29_cwq17"]
+[ext_resource type="Texture2D" uid="uid://cwd8p2faa1ctm" path="res://Assets/Towers/tape_dispenser.png" id="30_wcnou"]
+[ext_resource type="Texture2D" uid="uid://2lvep4ksr077" path="res://Assets/Towers/tape_dispenser_clean.png" id="31_1xwpj"]
+[ext_resource type="PackedScene" uid="uid://1wbrvf6qis3w" path="res://Scenes/Units/Heal.tscn" id="32_1xwpj"]
 [ext_resource type="Script" uid="uid://7nlrg46bqbhw" path="res://Scripts/UI/toMenu.gd" id="33_ajvq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26yhd"]
@@ -936,6 +939,25 @@ projectileHolder = NodePath("../../../../ProjectilesFolder")
 mobSpawner = NodePath("../../../../Mob_spawner")
 projectilePicture = ExtResource("19_unquq")
 cost = 500.0
+
+[node name="Tape" parent="CanvasLayer/SelectTwr/Unit_placer" node_paths=PackedStringArray("parentTo", "MapNode", "projectileHolder", "mobSpawner") instance=ExtResource("6_w7jjh")]
+layout_mode = 0
+anchors_preset = 0
+anchor_bottom = 0.0
+offset_left = 282.0
+offset_top = 11.0
+offset_right = 532.0
+offset_bottom = 276.0
+grow_vertical = 1
+texture_normal = ExtResource("30_wcnou")
+stretch_mode = 0
+parentTo = NodePath("../../../../FolderForTowers")
+picture = ExtResource("31_1xwpj")
+helthAmount = 100.0
+MapNode = NodePath("../../../..")
+mustContain = Array[PackedScene]([ExtResource("10_riaky"), ExtResource("32_1xwpj")])
+projectileHolder = NodePath("../../../../ProjectilesFolder")
+mobSpawner = NodePath("../../../../Mob_spawner")
 
 [node name="HealthyButton" type="Control" parent="CanvasLayer"]
 layout_mode = 3
