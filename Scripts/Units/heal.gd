@@ -14,5 +14,5 @@ func _ready() -> void:
 			print(body)
 			if body.has_node("Helth") :
 				var health : Node2D = body.get_node("Helth")
-				health.currentHealth -= 10
+				health.currentHealth += 10
 			
